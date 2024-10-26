@@ -8,6 +8,65 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        /* Основни настройки за тъмна цветова схема */
+        body {
+            background-color: #2b2b2b;
+            color: #ffffff;
+        }
+
+        /* Навигационна лента */
+        .navbar-inverse {
+            background-color: #3c3c3c;
+            border-color: #333333;
+        }
+
+            .navbar-inverse .navbar-brand {
+                color: #ffffff;
+            }
+
+            .navbar-inverse .navbar-nav > li > a {
+                color: #cccccc;
+            }
+
+                .navbar-inverse .navbar-nav > li > a:hover {
+                    color: #4ac7ff;
+                    background-color: transparent;
+                }
+
+            .navbar-inverse .navbar-nav > .active > a,
+            .navbar-inverse .navbar-nav > .active > a:focus,
+            .navbar-inverse .navbar-nav > .active > a:hover {
+                color: #ffffff;
+                background-color: #555555;
+            }
+
+        /* Jumbotron стил */
+        .jumbotron {
+            background-color: #3c3c3c;
+            color: #ffffff;
+            border-radius: 0;
+            padding: 30px;
+        }
+
+        /* Основно съдържание */
+        .container {
+            background-color: #2b2b2b;
+            color: #ffffff;
+        }
+
+        /* Стил на бутоните */
+        .btn {
+            background: linear-gradient(90deg, #3ae374, #17c0eb);
+            border: none;
+            color: white;
+        }
+
+            .btn:hover {
+                opacity: 0.9;
+                background: linear-gradient(90deg, #17c0eb, #3ae374);
+            }
+    </style>
 </head>
 <body>
     <!-- Navbar -->

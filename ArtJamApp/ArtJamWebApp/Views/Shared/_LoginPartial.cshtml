@@ -7,18 +7,43 @@
 <ul class="nav navbar-nav navbar-right">
     @if (SignInManager.IsSignedIn(User))
     {
-        <li>
-            <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                Hello, @UserManager.GetUserName(User)!
+    @inject UserManager<User> UserManager
+
+        <li class="dropdown">
+            @{
+                var user = await UserManager.GetUserAsync(User);
+                var profilePictureUrl = user?.ProfilePicture ?? "https://static.vecteezy.com/system/resources/thumbnails/046/300/546/small/avatar-user-profile-person-icon-gender-neutral-silhouette-profile-picture-suitable-for-social-media-profiles-icons-screensavers-free-png.png";
+            }
+
+            <a href="#"
+               class="dropdown-toggle d-flex align-items-center hidden-arrow"
+               data-toggle="dropdown"
+               role="button"
+               aria-haspopup="true"
+               aria-expanded="false">
+                <img src="@profilePictureUrl"
+                     class="rounded-circle"
+                     height="25"
+                     alt="User Avatar"
+                     loading="lazy" />
+                <span class="caret"></span>
             </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a href="#" class="dropdown-item">Hello, @UserManager.GetUserName(User)!</a>
+                </li>
+                <li><a href="#" class="dropdown-item">My profile</a></li>
+                <li><a href="#" class="dropdown-item">Settings</a></li>
+                <li>
+                    <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" method="post" style="display:inline;">
+                        <button type="submit" class="dropdown-item" style="color: #000; text-decoration: none;">
+                            Logout
+                        </button>
+                    </form>
+                </li>
+            </ul>
         </li>
-        <li>
-            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" style="display:inline;">
-                <button id="logout" type="submit" class="btn btn-link navbar-btn" style="color: #fff; text-decoration: none;">
-                    <span class="glyphicon glyphicon-log-out"></span> Logout
-                </button>
-            </form>
-        </li>
+
     }
     else
     {

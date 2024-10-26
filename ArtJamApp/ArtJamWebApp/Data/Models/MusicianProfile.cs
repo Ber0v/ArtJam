@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ArtJamWebApp.Data.Models
@@ -11,10 +10,10 @@ namespace ArtJamWebApp.Data.Models
 
         [Required]
         [ForeignKey("User")]
-        public required string UserId { get; set; }
-        public required IdentityUser User { get; set; }
+        public Guid UserId { get; set; }
+        public required User User { get; set; }
 
-        [StringLength(1000, ErrorMessage = "UserBi cannot be longer than 1000 characters.")]
+        [StringLength(1000, ErrorMessage = "UserBio cannot be longer than 1000 characters.")]
         public string? MusicianBio { get; set; }
 
         public ICollection<MusicianInstrument> Instruments { get; set; } = new List<MusicianInstrument>();

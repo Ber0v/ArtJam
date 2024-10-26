@@ -54,6 +54,18 @@ namespace ArtJamWebApp.Data
                 .HasForeignKey(mi => mi.MusicianProfileId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.MusicianProfile)
+                .WithOne(mp => mp.User)
+                .HasForeignKey<MusicianProfile>(mp => mp.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.ArtistProfile)
+                .WithOne(ap => ap.User)
+                .HasForeignKey<ArtistProfile>(ap => ap.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             UserFollowerMetod(modelBuilder);
         }
 

@@ -9,5 +9,11 @@ namespace ArtJamWebApp.Data.Models
             this.Id = Guid.NewGuid();
         }
 
+        public string? ProfilePicture { get; set; }
+
+        public bool IsMusician { get; set; }
+
+        public MusicianProfile? MusicianProfile { get; set; }
+        public ArtistProfile? ArtistProfile { get; set; }
     }
 }
